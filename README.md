@@ -2,4 +2,4 @@
 
 #### Run Locally:
 
-`javac *.java; java main`
+`javac *.java; java GoFish`
