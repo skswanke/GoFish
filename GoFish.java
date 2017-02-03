@@ -23,7 +23,7 @@ AI
 Pool
 
 */
-class main {
+class GoFish {
     public static void main(String[] args) {
         System.out.println("Go Fish");
     }
