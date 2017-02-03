@@ -25,6 +25,36 @@ Pool
 */
 class GoFish {
     public static void main(String[] args) {
+        Player player = new Player();
+        AI ai = new AI();
+        Deck deck = new Deck();
+        // true = player, false = ai
+        boolean whichTurn = true;
+        boolean isOver = false;
+        deal(player, ai, deck);
+        while(!isOver){
+            if(whichTurn){
+                player.turn();
+            }
+            else {
+                ai.turn();
+            }
+            if(checkWin()){
+               isOver = true;
+            }
+            whichTurn = !whichTurn;
+        }
+        
+        winner = findWinner();
         System.out.println("Go Fish");
+    }
+    private void deal(Player player, AI ai, Deck deck){
+//         Deal
+    }
+    private boolean checkWin(){
+        return true;
+    }
+    private String findWinner(){
+        return "You won!";
     }
 }
