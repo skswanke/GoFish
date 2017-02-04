@@ -34,10 +34,10 @@ class GoFish {
         deal(player, ai, deck);
         while(!isOver){
             if(whichTurn){
-                player.turn();
+//                player.turn();
             }
             else {
-                ai.turn();
+//                ai.turn();
             }
             if(checkWin()){
                isOver = true;
@@ -45,16 +45,16 @@ class GoFish {
             whichTurn = !whichTurn;
         }
         
-        winner = findWinner();
+        String winner = findWinner();
         System.out.println("Go Fish");
     }
-    private void deal(Player player, AI ai, Deck deck){
+    private static void deal(Player player, AI ai, Deck deck){
 //         Deal
     }
-    private boolean checkWin(){
+    private static boolean checkWin(){
         return true;
     }
-    private String findWinner(){
+    private static String findWinner(){
         return "You won!";
     }
 }

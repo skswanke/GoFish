@@ -1,1 +1,4 @@
-
+class Player {
+    public Player() {
+    }
+}
