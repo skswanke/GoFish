@@ -34,10 +34,10 @@ class GoFish {
         deal(player, ai, deck);
         while(!isOver){
             if(whichTurn){
-//                player.turn();
+                deck = player.turn(deck);
             }
             else {
-//                ai.turn();
+                deck = ai.turn(deck);
             }
             if(checkWin()){
                isOver = true;

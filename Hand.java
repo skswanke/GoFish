@@ -10,8 +10,9 @@ public class Hand implements CardPileInterface {
     private ArrayList<Card> hand;
 
     public Hand () {
-       hand = new ArrayList<Card>(26);
+       hand = new ArrayList<Card>(7);
     }
+    public Hand (Hand newHand) { hand = newHand}
 
     @Override
     public void shuffle() {

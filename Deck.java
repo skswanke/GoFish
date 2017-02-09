@@ -9,6 +9,7 @@ import java.util.Collections;
 
 public class Deck implements CardPileInterface {
 	private ArrayList<Card> deck = new ArrayList<Card>(52);
+	private int HANDSIZE = 7;
 
     public Deck() {
         for (int i=1;i<4+1;i++) {
@@ -38,7 +39,7 @@ public class Deck implements CardPileInterface {
 
     public Hand dealHand() {
         Hand hand = new Hand();
-        for (int i=0;i<26;i++) {
+        for (int i=0;i<HANDSIZE;i++) {
             hand.addCard(deck.get(0));
             deck.remove(0);
         }
