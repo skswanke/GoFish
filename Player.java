@@ -18,7 +18,7 @@ public abstract class Player {
         
     }
     
-    public abstract void turn();
+    public abstract void turn(Deck deck);
 
     /**
      * this method will draw a card from the pool 
