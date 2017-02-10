@@ -17,6 +17,8 @@ public abstract class Player {
         this.deck = deck;
         
     }
+    
+    public abstract void turn();
 
     /**
      * this method will draw a card from the pool 
