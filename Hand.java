@@ -80,17 +80,17 @@ public class Hand implements CardPileInterface {
       }
       
       //For each rank in the array keeping track of how many cards of that rank there are, 
-      for(int bookRank = 1; bookRank <= bookCount.length; bookRank++) {
+      for(int bookRank = 0; bookRank < bookCount.length; bookRank++) {
       
          //If there are 4 cards of that rank, adds that book to the ArrayList holding which books are being placed.
          if(bookCount[bookRank] == 4) {
          
-            books.add(bookRank);
+            books.add(bookRank + 1);
             
             //Then, iterates through the players hand, and removes all the cards in that book.
             for(int k = 0; k < hand.size(); k++) {
             
-               if(hand.get(k).getRank() == bookRank) {
+               if(hand.get(k).getRank() == bookRank + 1) {
                
                   hand.remove(hand.get(k));
                }
