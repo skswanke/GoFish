@@ -12,6 +12,17 @@ public class Hand implements CardPileInterface {
     public Hand () {
        hand = new ArrayList<Card>(26);
     }
+    
+    //This constructor makes a Hand using an ArrayList of existing Cards that are passed in.
+    public Hand (ArrayList<Card> cards) {
+      
+      hand = new ArrayList<Card>();
+      
+      for(int i = 0; i < cards.size(); i++) {
+         hand.add(cards.get(i));
+      }
+    
+    }
 
     @Override
     public void shuffle() {
@@ -29,6 +40,10 @@ public class Hand implements CardPileInterface {
         hand.remove(0);
         return c;
     }
+    
+    public void removeCard(Card c) {
+      hand.remove(c);
+    }
 
     public int getSize() {
         return hand.size();
@@ -36,5 +51,56 @@ public class Hand implements CardPileInterface {
 
     public Card getTopCard() {
         return hand.get(0);
+    }
+    
+    
+    //This method checks the player's hand for any books, then returns an array that indicates which books the player has.
+    //It also removes those books from the player's hand.
+    public ArrayList<Integer> placeBooks() {
+    
+      //Creates an ArrayList to indicate which books (i.e. what rank the books are) the player has.
+      ArrayList<Integer> books = new ArrayList<Integer>();
+      
+      //Creates an array to keep track of what ranks the player has 4 of.
+      int[] bookCount = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+      
+      
+      //For each rank of card, from 1 to 13,
+      for(int i = 1; i <= 13; i++) {  
+      
+         //Iterates through the player's hand and finds which cards have that rank.
+         for(int j = 0; j < hand.size(); j++) {
+         
+            if(hand.get(j).getRank() == i) {
+              //Adds 1 to the count for that rank.
+              bookCount[i]++;
+            
+            }
+         } 
+      }
+      
+      //For each rank in the array keeping track of how many cards of that rank there are, 
+      for(int bookRank = 1; bookRank <= bookCount.length; bookRank++) {
+      
+         //If there are 4 cards of that rank, adds that book to the ArrayList holding which books are being placed.
+         if(bookCount[bookRank] == 4) {
+         
+            books.add(bookRank);
+            
+            //Then, iterates through the players hand, and removes all the cards in that book.
+            for(int k = 0; k < hand.size(); k++) {
+            
+               if(hand.get(k).getRank() == bookRank) {
+               
+                  hand.remove(hand.get(k));
+               }
+            }
+         }
+      
+      }
+      
+      //Returns what ranks the player now has books of. 
+      return books;
+    
     }
 }
