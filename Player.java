@@ -8,11 +8,17 @@ import java.util.ArrayList;
  */
 public abstract class Player {
 
-    private Hand hand = new Hand();
+    public Hand hand = new Hand();
+    private Deck deck;
     private ArrayList<Integer> book = new ArrayList<>();
     private Player opponent;
-    public Player() {
+    public Player(Hand hand, Deck deck) {
+        this.hand = hand;
+        this.deck = deck;
+        
     }
+    
+    public abstract void turn();
 
     /**
      * this method will draw a card from the pool 
@@ -34,12 +40,12 @@ public abstract class Player {
     /**
      * this method will ask their opponent to give them card
      */
-    public abstract void getReply();
+    public abstract void getReply(Card card);
     
     /**
      * this method will respond to their opponent's request
      */
-    public abstract void reply();
+    public abstract Card reply();
 
     /**
      * @return the hand
