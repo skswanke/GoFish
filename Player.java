@@ -34,7 +34,7 @@ public abstract class Player {
     /**
      * this method will ask their opponent to give them card
      */
-    public abstract void getReply();
+    public abstract void getReply(Card c);
     
     /**
      * this method will respond to their opponent's request
