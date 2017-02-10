@@ -25,7 +25,7 @@ Pool
 */
 class GoFish {
     public static void main(String[] args) {
-        Player player = new Player();
+        Player player = new Human();
         AI ai = new AI();
         Deck deck = new Deck();
         // true = player, false = ai
