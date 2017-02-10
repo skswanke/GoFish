@@ -1,18 +1,16 @@
 class Human extends Player {
-    public Human(Hand newHand) {
-        super(newHand);
+    public Human(Hand newHand, Deck deck) {
+        super(newHand, deck);
     }
 
-    public Deck turn(Deck deck){
-        System.out.print("Your cards are: ");
-        for(int i = 0; i<hand.size(); i++){
-            System.out.print(hand[i].getRank().toString() + hand[i].getRank().toString() + ", ");
-        }
+    public void turn(){
+        System.out.print("Your cards are: " + hand.toString());
         System.out.println("\nChoose a rank to ask for: ");
         Scanner scanner = new Scanner(System.in);
         String askRank = scanner.nextLine();
-        aiCard = getReply(askRank);
-        if(aiCard != null){
+        Card aiCard = null;
+        Card aiCard = getReply(askRank);
+        if(aiCard.getRank() != -1){
             hand.addCard(aiHasCard);
         } else {
             System.out.println("Sorry AI doesn't have that card! Go Fish!");
@@ -20,7 +18,13 @@ class Human extends Player {
             System.out.println("You got " + cardRecieved + "!");
         }
     }
-    private getReply(Card c){
-        AI.reply();
+    @override
+    private Card getReply(Card c){
+        return AI.reply();
+    }
+    @override
+    public reply(Card c) {
+        System.out.println("Do you have a " + c.toString() + "?");
+
     }
 }

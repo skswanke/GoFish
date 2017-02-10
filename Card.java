@@ -96,6 +96,6 @@ public class Card {
      * @return
      */
     public boolean equals (Card c) {
-        return (rank == (c.getRank())) && (suit == c.getSuit());
+        return (rank == (c.getRank()));
     }
 }

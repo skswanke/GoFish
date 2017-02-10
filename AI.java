@@ -132,16 +132,13 @@ import java.util.*;
 			for(Card d:hand){
 				if(c==d)
 					numCard++;
-            if(numCard == 4){
-            	for(int i=0;i<4;i++){
-            		hand.remove(c);
-            	}
-            	numBooks ++;
-            	return c;
-            }
-        
-            	
-            
+				if(numCard == 4){
+					for(int i=0;i<4;i++){
+						hand.remove(c);
+					}
+					numBooks ++;
+					return c;
+				}
 			}
 		}
 	}

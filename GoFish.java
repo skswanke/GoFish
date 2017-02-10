@@ -22,9 +22,11 @@ Pool
 */
 class GoFish {
     public static void main(String[] args) {
-        Player player = new Human();
-        AI ai = new AI();
         Deck deck = new Deck();
+        Hand humanHand = deck.dealHand();
+        Hand AIHand = deck.dealHand();
+        Human player = new Human(humanHand, deck);
+        AI ai = new AI(AIHand, deck);
         // true = player, false = ai
         boolean whichTurn = true;
         boolean isOver = false;

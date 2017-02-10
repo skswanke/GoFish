@@ -38,7 +38,7 @@ public class Deck implements CardPileInterface {
 
     public Hand dealHand() {
         Hand hand = new Hand();
-        for (int i=0;i<26;i++) {
+        for (int i=0;i<7;i++) {
             hand.addCard(deck.get(0));
             deck.remove(0);
         }
