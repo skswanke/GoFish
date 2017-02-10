@@ -20,4 +20,7 @@ class Human extends Player {
             System.out.println("You got " + cardRecieved + "!");
         }
     }
+    private getReply(Card c){
+        AI.reply();
+    }
 }
