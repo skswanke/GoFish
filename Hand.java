@@ -103,4 +103,16 @@ public class Hand implements CardPileInterface {
       return books;
     
     }
+    
+    public void printCards () {
+    
+        for(Card c : hand) {
+            
+            System.out.print(c.toString() + "\n");
+            
+        }  
+        
+    }
+    
+    
 }
