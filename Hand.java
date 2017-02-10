@@ -54,12 +54,12 @@ public class Hand implements CardPileInterface {
     }
     
     
-    //This method checks the player's hand for any books, then returns an array that indicates which books the player has.
+    //This method checks the player's hand for any books, then returns an int that indicates how many books the player has.
     //It also removes those books from the player's hand.
-    public ArrayList<Integer> placeBooks() {
+    public int placeBooks() {
     
-      //Creates an ArrayList to indicate which books (i.e. what rank the books are) the player has.
-      ArrayList<Integer> books = new ArrayList<Integer>();
+      //Creates an int to indicate how many books the player has.
+      int books = 0;
       
       //Creates an array to keep track of what ranks the player has 4 of.
       int[] bookCount = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -85,7 +85,7 @@ public class Hand implements CardPileInterface {
          //If there are 4 cards of that rank, adds that book to the ArrayList holding which books are being placed.
          if(bookCount[bookRank] == 4) {
          
-            books.add(bookRank + 1);
+            books++;
             
             //Then, iterates through the players hand, and removes all the cards in that book.
             for(int k = 0; k < hand.size(); k++) {
