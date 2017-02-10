@@ -104,13 +104,16 @@ public class Hand implements CardPileInterface {
     
     }
     
-    public void printCards () {
+    public String toString () {
     
+        String cardString = new String();
         for(Card c : hand) {
             
-            System.out.print(c.toString() + "\n");
+            cardString += c.toString() + "\n";
             
-        }  
+        } 
+        
+        return cardString; 
         
     }
     
