@@ -10,7 +10,7 @@ public abstract class Player {
 
     private Hand hand = new Hand();
     private ArrayList<Integer> book = new ArrayList<>();
-
+    private Player opponent;
     public Player() {
     }
 
@@ -34,7 +34,7 @@ public abstract class Player {
     /**
      * this method will ask their opponent to give them card
      */
-    public abstract void getReply(Card c);
+    public abstract void getReply();
     
     /**
      * this method will respond to their opponent's request
@@ -46,5 +46,9 @@ public abstract class Player {
      */
     public Hand getHand() {
         return hand;
+    }
+    
+    public void setOpponent(Player opponent){
+        this.opponent = opponent;
     }
 }
