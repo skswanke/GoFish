@@ -1,6 +1,5 @@
 /*
 Go Fish main class
-
 Go fish rules:
 Five cards are dealt from a standard 52-card deck to each player, or seven cards if there are four or fewer players.
 The remaining cards are shared between the players, usually spread out in a disorderly pile referred to as the "ocean"
@@ -14,14 +13,12 @@ at any time has all four cards of one face value, it forms a book, and the cards
 player.
 Play proceeds to the left. When all sets of cards have been laid down in books, the game ends. The player with the
 most books wins.
-
 Possible classes:
 Deck
 Hand
 Player
 AI
 Pool
-
 */
 class GoFish {
     public static void main(String[] args) {
@@ -34,17 +31,17 @@ class GoFish {
         deal(player, ai, deck);
         while(!isOver){
             if(whichTurn){
-//                player.turn();
+                deck = player.turn(deck);
             }
             else {
-//                ai.turn();
+                deck = ai.turn(deck);
             }
             if(checkWin()){
-               isOver = true;
+                isOver = true;
             }
             whichTurn = !whichTurn;
         }
-        
+
         String winner = findWinner();
         System.out.println("Go Fish");
     }
