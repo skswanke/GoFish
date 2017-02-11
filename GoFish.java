@@ -26,17 +26,23 @@ class GoFish {
         Hand humanHand = deck.dealHand();
         Hand AIHand = deck.dealHand();
         Human player = new Human(humanHand, deck);
-        AI ai = new AI(AIHand, deck);
+        int mode = 1;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("What difficulty would you like to play at? (1,2,3): ");
+        mode = scanner.nextInt();
+        AI ai = new AI(AIHand, deck, mode);
+        player.setOpponent(ai);
+        ai.setOpponent(player);
         // true = player, false = ai
         boolean whichTurn = true;
         boolean isOver = false;
         deal(player, ai, deck);
         while(!isOver){
             if(whichTurn){
-                deck = player.turn(deck);
+                player.turn();
             }
             else {
-                deck = ai.turn(deck);
+                ai.turn();
             }
             if(checkWin()){
                 isOver = true;
@@ -44,16 +50,24 @@ class GoFish {
             whichTurn = !whichTurn;
         }
 
-        String winner = findWinner();
-        System.out.println("Go Fish");
+        findWinner(player.score(), ai.score());
+        System.exit(0);
     }
-    private static void deal(Player player, AI ai, Deck deck){
-//         Deal
-    }
+
     private static boolean checkWin(){
-        return true;
+        // If all cards are in books there will be 13 books
+        if(player.score() + ai.score() == 13) {
+            return true;
+        } else {
+            return false;
+        }
     }
-    private static String findWinner(){
-        return "You won!";
+
+    private static String findWinner(int pScore, int aScore){
+        if(pScore>aScore){
+            System.out.println("You win!");
+        } else {
+            System.out.println("You lose!");
+        }
     }
 }
