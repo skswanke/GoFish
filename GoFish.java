@@ -22,13 +22,18 @@ Pool
 */
 class GoFish {
     public static void main(String[] args) {
+        // Initialize Game
         Deck deck = new Deck();
         Hand humanHand = deck.dealHand();
         Hand AIHand = deck.dealHand();
         Human player = new Human(humanHand, deck);
+
+        // Get mode from user
         int mode = 1;
         Scanner scanner = new Scanner(System.in);
         System.out.println("What difficulty would you like to play at? (1,2,3): ");
+
+        // Continue to initialize
         mode = scanner.nextInt();
         AI ai = new AI(AIHand, deck, mode);
         player.setOpponent(ai);
@@ -36,7 +41,8 @@ class GoFish {
         // true = player, false = ai
         boolean whichTurn = true;
         boolean isOver = false;
-        deal(player, ai, deck);
+
+        // Game loop - alternate turns until the end of the game
         while(!isOver){
             if(whichTurn){
                 player.turn();
@@ -44,23 +50,15 @@ class GoFish {
             else {
                 ai.turn();
             }
-            if(checkWin()){
+            if(player.score() + ai.score() == 13){
                 isOver = true;
             }
             whichTurn = !whichTurn;
         }
 
+        // Announce Winner then exit
         findWinner(player.score(), ai.score());
         System.exit(0);
-    }
-
-    private static boolean checkWin(){
-        // If all cards are in books there will be 13 books
-        if(player.score() + ai.score() == 13) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     private static String findWinner(int pScore, int aScore){
