@@ -22,21 +22,28 @@ public class Human extends Player {
             //Gets the rank from the user
             System.out.println("\nChoose a rank to ask for: ");
             Scanner scanner = new Scanner(System.in);
-            String input = scanner.nextLine();
              
-            while(!isInteger(input)) {
-                System.out.println("Please enter a valid number.");
-                input = scanner.nextLine();       
+            boolean correctInput = true;
+            while(correctInput){
+                try{
+                    int input = scanner.nextInt();
+                    if(!hand.findRank(input)){
+                        throw new NumberFormatException();
+                    }
+                    correctInput = false;
+                }
+                }catch (NumberFormatException e) {
+                    System.out.println("Please enter a valid card in your hand!");
+                }
+                
             }
+        
+            
              
-            int askRank = Integer.parseInt(input);
+           
              
-             while(!hand.findRank(askRank) || askRank < 0 || askRank > 13 ) {
-                 System.out.println("Please enter a valid card that you have in your hand.");
-                 input = scanner.nextLine();
-             }
+         
              
-             askRank = Integer.parseInt(input);
         
             //Requests the cards from the opponent. Not sure if this works with the methods in AI.
             ArrayList<Card> cardsReceived = opponent.reply(askRank);
@@ -61,25 +68,7 @@ public class Human extends Player {
         
         
     }
-                  
-    public boolean isInteger(String input) {
-        
-        boolean isInteger = true;
-        for(char c : input.toCharArray()){
-            if(!Character.isDigit(c)) {
-                isInteger = false;
-            }
-        }
-        
-        try{
-            Integer.parseInt(input);
-        } catch(NumberFormatException e) {
-            isInteger = false;
-        }
-       
-        return isInteger;
-       
-    }
+                 
    
     //Replies to the opponent, returning cards that the opponent requested.
     public ArrayList reply(int rank) {
