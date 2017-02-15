@@ -24,7 +24,7 @@ public class Human extends Player {
             Scanner scanner = new Scanner(System.in);
             String input = scanner.nextLine();
              
-            while(!isNumber(input)) {
+            while(!isInteger(input)) {
                 System.out.println("Please enter a valid number.");
                 input = scanner.nextLine();       
             }
@@ -62,12 +62,23 @@ public class Human extends Player {
         
     }
                   
-    public boolean isNumber(String input) {
+    public boolean isInteger(String input) {
+        
+        boolean isInteger = true;
         for(char c : input.toCharArray()){
-            if(!Character.isDigit(c)) return false;
+            if(!Character.isDigit(c)) {
+                isInteger = false;
+            }
         }
         
-        return true;
+        try{
+            Integer.parseInt(input);
+        } catch(NumberFormatException e) {
+            isInteger = false;
+        }
+       
+        return isInteger;
+       
     }
    
     //Replies to the opponent, returning cards that the opponent requested.
