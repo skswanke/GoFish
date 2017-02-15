@@ -24,6 +24,8 @@ public class Human extends Player {
             Scanner scanner = new Scanner(System.in);
             String input = scanner.nextLine();
             int askRank = Integer.parseInt(input);
+             
+             while(!
         
             //Requests the cards from the opponent. Not sure if this works with the methods in AI.
             ArrayList<Card> cardsReceived = opponent.reply(askRank);
