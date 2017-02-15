@@ -23,21 +23,24 @@ public class Human extends Player {
             System.out.println("\nChoose a rank to ask for: ");
             Scanner scanner = new Scanner(System.in);
              
+            int askRank = 0;
             boolean correctInput = true;
             while(correctInput){
                 try{
-                    int input = scanner.nextInt();
-                    if(!hand.findRank(input)){
-                        throw new NumberFormatException();
+                    askRank = scanner.nextInt();
+                    while(!hand.findRank(askRank) || askRank > 13 || askRank < 0){
+                       System.out.println("Please enter a rank that you have.");
+                       askRank = scanner.nextInt();
                     }
                     correctInput = false;
-                }
-                }catch (NumberFormatException e) {
-                    System.out.println("Please enter a valid card in your hand!");
+                
+                }catch (Exception e) {
+                    System.out.println("Please enter a valid rank!");
+                    scanner.next();
                 }
                 
             }
-        
+
             
              
            
