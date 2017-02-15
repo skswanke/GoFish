@@ -16,7 +16,7 @@ public class AI extends Player{
 		super(hand,deck);
 		this.mode = mode;
 	}
-	public void Turn(Deck deck){
+	public void turn(Deck deck){
 		Card books = checkForBooks();
 		ArrayList<Card> received = new ArrayList<Card>();
 		received = null;
