@@ -17,11 +17,8 @@ public class AI extends Player{
 		this.mode = mode;
 	}
 	public void turn(Deck deck){
-		Card books = checkForBooks();
 		ArrayList<Card> received = new ArrayList<Card>();
 		received = null;
-		if(books != null)
-			System.out.println("Your opponent got a book of" + books +"s!");
 		if(hand.getSize() == 0){
 			System.out.println("Your opponent will draw a card from deck. Now it's your turn to go.");
 			hand.addCard(deck.drawCard());
@@ -67,6 +64,7 @@ public class AI extends Player{
 			}
 
 		}
+		books += hand.placeBooks();
 	}
 	/**
 	 * This method is used to choose a card as a request in simple mode
@@ -112,8 +110,8 @@ public class AI extends Player{
 	private boolean shouldGiven(int rank){
 		for(int i=0;i<hand.getSize();i++){
 			if(rank == hand.getCard(i).getRank()){
-				return true;
 				count++;
+				return true;
 			}
 		}
 		return false;
@@ -171,23 +169,10 @@ public class AI extends Player{
 			else
 				System.out.print("Go fish!");
 		}
+		return given;
 
 	}
-	public Card checkForBooks(){
-		for(Card c: hand){
-			int numCard = 0;
-			for(Card d:hand){
-				if(c==d)
-					numCard++;
-				if(numCard == 4){
-					for(int i=0;i<4;i++){
-						hand.removeCard(c);
-					}
-					return c;
-				}
-			}
-		}
-	}
+
 
 }
 
