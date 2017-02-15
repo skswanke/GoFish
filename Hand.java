@@ -53,6 +53,11 @@ public class Hand implements CardPileInterface {
         return hand.get(0);
     }
     
+    public Card getCard(int index) {
+        return hand.get(index);
+    }
+   
+    
     
     //This method checks the player's hand for any books, then returns an int that indicates how many books the player has.
     //It also removes those books from the player's hand.

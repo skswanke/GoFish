@@ -32,7 +32,7 @@ public abstract class Player {
     /**
      * this method will respond to their opponent's request
      */
-    public abstract ArrayList reply(Card card);
+    public abstract ArrayList reply(int rank);
     
     public void setOpponent(Player opponent){
         this.opponent = opponent;
