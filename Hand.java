@@ -57,7 +57,18 @@ public class Hand implements CardPileInterface {
         return hand.get(index);
     }
    
-    
+    public boolean findRank(int rank) {
+        
+        boolean cardExists = false;
+        for(Card c : hand) {
+            if(c.getRank() == rank) {
+                cardExists = true;
+            }
+            
+        }
+        
+        return cardExists;
+    }
     
     //This method checks the player's hand for any books, then returns an int that indicates how many books the player has.
     //It also removes those books from the player's hand.
