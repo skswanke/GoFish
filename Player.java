@@ -11,7 +11,7 @@ public abstract class Player {
     public Hand hand;
     public Deck deck;
     int books; 
-    private Player opponent;
+    public Player opponent;
     
     public Player(Hand hand, Deck deck) {
         this.hand = hand;
