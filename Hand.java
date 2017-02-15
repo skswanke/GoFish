@@ -109,7 +109,7 @@ public class Hand implements CardPileInterface {
         String cardString = new String();
         for(Card c : hand) {
             
-            cardString += c.toString() + "\n";
+            cardString += c.toString() + ",";
             
         } 
         
